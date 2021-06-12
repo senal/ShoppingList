@@ -1,14 +1,17 @@
 ------------------------------
 ------- kubctl commands ------
 ------------------------------
-> kubctl get deployments 
+> kubectl get deployments 
     This commands list all running deployments un k8s.
 
 > kubectl describe deployment [depl-name]
     Prints out details about a specific deployment.
 
-> kubctl apply -f [config-file-name]
+> kubectl apply -f [config-file-name]
     Creates a deployment out of config file.
 
 > kubectl delete deployment [depl-name] 
     Deletes a deployment
+
+> kubectl rollout restart deployment [depl-file-name]
+    

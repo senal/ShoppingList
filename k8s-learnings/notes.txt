@@ -3,8 +3,15 @@
 ------------------------------
 
 step 1
-- make change to your project.
-- re-build the image with a new version number.
-- in the deployment config update the version of the image.
-- run the command kubctl apply -f [depl-name].
+    - make change to your project.
+    - re-build the image with a new version number.
+    - in the deployment config update the version of the image.
+    - run the command kubctl apply -f [depl-file-name].
 
+step 2 (Prefered method to update deployment config file with new images)
+    - make sure the deployment is using the "latest" tag in the pod spec section.
+    - make an update to your code.
+    - build the image.
+    - push the image to docker hub.
+    - run the command 
+        kubectl rollout restart deployment [depl-file-name]
