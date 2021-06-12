@@ -24,7 +24,7 @@ namespace ShopService.Controlllers
         [HttpGet]
         public Task<List<string>> GetAll () 
         {
-            List<string> list = new() { "Coles", "WoolWorths", "Aldi", "IGA", "Costco"};
+            List<string> list = new() { "Coles", "WoolWorths", "Aldi", "IGA", "Costco", "FoodWorks"};
             return Task.FromResult(list);
         }
 

@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: shopservice
-          image: shoppinglist/shopservice:0.0.1       
+          image: shoppinglist/shopservice:0.0.2
