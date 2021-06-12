@@ -1,0 +1,23 @@
+-------------------------
+--- Pods ----------------
+-------------------------
+
+1. If following errors when deploying locally
+    ErrImagePull, ErrImageNeverPull, ImagePullBackOff 
+    This is due to pods deployment try to pull images from docker hub which is not correct in local deployment sa we haven't push them in to docker hub
+    In order solving this issue.
+    ---------------------------------------
+    spec:
+      containers:
+        - name: shopservice
+          image: shoppinglist/shopservice:0.0.1
+          imagePullPolicy: Never
+
+    Add imagePullPolicy: Never in to your <pod-name>.yaml file.
+    Note: Please keep in mind that we are not deploying pods individually. This is just to show this error
+
+2. crashloopbackoff error.
+    This is due to your container inside in your pods didn't start crorrectly. could be crashed in the startup.
+    Check for logs.
+        e.g kubctl logs <pod-name>
+    Worth running the container locally in order see what's going on inside.
