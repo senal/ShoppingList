@@ -1,0 +1,10 @@
+------------------------------
+--- updating deployments -----
+------------------------------
+
+step 1
+- make change to your project.
+- re-build the image with a new version number.
+- in the deployment config update the version of the image.
+- run the command kubctl apply -f [depl-name].
+
