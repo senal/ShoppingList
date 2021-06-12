@@ -1,16 +1,19 @@
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ListService.Controller
+namespace ListService.Controllers
 {
 
     [ApiController]
     [Route("[controller]")]
     public class ListController : ControllerBase
     {
-        public ListController()
+        private readonly HttpClient httpClient;
+
+        public ListController(HttpClient httpClient)
         {
-            
+            this.httpClient = httpClient;
         }
 
 
@@ -19,6 +22,9 @@ namespace ListService.Controller
         {
             return Task.FromResult("Alooo, This is the list service");
         }
+
+
+        
     }
     
 }
