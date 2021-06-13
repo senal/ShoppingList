@@ -9,11 +9,11 @@ namespace ListService.Controllers
     [Route("[controller]")]
     public class ListController : ControllerBase
     {
-        private readonly HttpClient httpClient;
+        private readonly HttpClient _httpClient;
 
         public ListController(HttpClient httpClient)
         {
-            this.httpClient = httpClient;
+            _httpClient = httpClient;
         }
 
 

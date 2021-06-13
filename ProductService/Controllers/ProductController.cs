@@ -1,3 +1,4 @@
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,9 +9,11 @@ namespace ProductService.Controllers
     [Route("[controller]")]
     public class ProductController: ControllerBase 
     {
-        public ProductController()
+        private readonly HttpClient _httpClient;
+
+        public ProductController(HttpClient httpClient)
         {
-            
+            _httpClient = httpClient;
         }
 
         [HttpGet]
