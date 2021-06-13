@@ -14,4 +14,4 @@ step 2 (Prefered method to update deployment config file with new images)
     - build the image.
     - push the image to docker hub.
     - run the command 
-        kubectl rollout restart deployment [depl-file-name]
+        kubectl rollout restart deployment [depl-name]

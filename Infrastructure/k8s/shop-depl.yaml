@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: shopservice
-          image: shoppinglist/shopservice:latest
+          image: ranga/shopservice:latest
