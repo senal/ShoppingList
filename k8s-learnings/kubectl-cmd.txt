@@ -16,3 +16,13 @@
 > kubectl rollout restart deployment [depl-file-name]
 
 > kubectl logs <pod-name> ( you can get the list of pods running ---> kubectl get pods )
+
+> kubectl get services 
+> kubectl get services -o wide
+    Lists all the services in the cluster
+
+> kubectl describe service <service-name> e.g shopservice-srv
+
+> kubectl delete svc <service-name>
+> kubectl delete pod <pod-name> --now
+
