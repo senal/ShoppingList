@@ -2,4 +2,4 @@
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 COPY bin/Release/net5.0/publish/ app/
 WORKDIR /app
-ENTRYPOINT [ "dotnet", "listservice.dll" ]
+ENTRYPOINT [ "dotnet", "ListService.dll" ]

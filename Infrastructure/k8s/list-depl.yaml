@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: listservice-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: listservice
+  template:
+    metadata:
+      labels:
+        app: listservice
+    spec:
+      containers:
+        - name: listservice
+          image: ranga/listservice
