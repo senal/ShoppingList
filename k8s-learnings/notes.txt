@@ -15,3 +15,18 @@ step 2 (Prefered method to update deployment config file with new images)
     - push the image to docker hub.
     - run the command 
         kubectl rollout restart deployment [depl-name]
+
+----------------------------
+------- Services -----------
+----------------------------
+
+Provids networking between pods.
+also allow access to pods from outside world.
+
+--- Types of Services ---
+1. Cluster  IP: Sets up an easy-to-remember URL to access a pod. Only exposes pods in the cluster. ( This can be used to internal communication )
+2. Node Port: Makes a pod accessible from outside the cluster. Usually only used for dev purposes. 
+3. Load Balancer:  Makes a pod accessible from outside the cluster. This is the right way to expose a pod to the outside world.
+4. External Name: Redirects an in-cluster request to a CNAME url (No need to worry about this one.)
+
+
