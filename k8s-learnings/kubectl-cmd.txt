@@ -13,7 +13,8 @@
 > kubectl delete deployment [depl-name] 
     Deletes a deployment
 
-> kubectl rollout restart deployment [depl-file-name]
+> kubectl rollout restart deployment [depl-name]
+    Redeploy changes to you deployment and services. ( assume your services are listed in the same depl file)
 
 > kubectl logs <pod-name> ( you can get the list of pods running ---> kubectl get pods )
 
