@@ -23,7 +23,7 @@ namespace ListService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll ()
         {
-            _httpClient.BaseAddress = new Uri("http://localhost:5002/");
+            _httpClient.BaseAddress = new Uri("http://shopservice-clusterip-srv:5002/");
             var res = await _httpClient.GetAsync("shop");
             if(res.IsSuccessStatusCode){
                 var list = await res.Content.ReadFromJsonAsync<List<string>>();
