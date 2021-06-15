@@ -15,3 +15,16 @@ spec:
       containers:
         - name: listservice
           image: ranga/listservice
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: listservice-srv
+spec:
+  selector:
+    app: listservice
+  ports:
+    - name: listservice
+      protocol: TCP
+      port: 5000
+      targetPort: 5000        
