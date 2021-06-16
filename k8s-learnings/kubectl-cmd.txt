@@ -14,7 +14,7 @@
     Deletes a deployment
 
 > kubectl rollout restart deployment [depl-name]
-    Redeploy changes to you deployment and services. ( assume your services are listed in the same depl file)
+    Redeploy changes to you deployment and services. This will bring down the latest from image repo( assume your services are listed in the same depl file)
 
 > kubectl logs <pod-name> ( you can get the list of pods running ---> kubectl get pods )
 
