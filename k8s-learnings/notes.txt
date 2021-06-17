@@ -30,3 +30,28 @@ also allow access to pods from outside world.
 4. External Name: Redirects an in-cluster request to a CNAME url (No need to worry about this one.)
 
 
+
+----------------------------
+----- Ingress controller----
+----------------------------
+
+Ingress controller can not do routing base on the request method.
+Method POST route /list
+Method GET route /list
+
+Though the above requests have 2 distinct methods their path looks same.
+Ingress controller won't be able to understand these requests are 2 different methods.
+
+--- Defining query parameters in the path
+e.g
+    - path: /list/?(.*)
+        e.g: list/1  ---> returns the detail of the stated list id.
+
+    - path: /list/delete/?(.*)
+        e.g: /list/delete/2 ----> deletes the specified list.
+
+    - path list/?(.*)/shop
+        e.g: /list/1/2 ----> returns the shops belongs to the provided list item.
+
+    - path list/?(.*)/items
+        e.g: /list/1/items ----> returns the product items belongs to the provided list item.
