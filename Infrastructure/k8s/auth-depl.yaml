@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authservice-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authservice
+  template:
+    metadata:
+      labels:
+        app: authservice
+    spec:
+      containers:
+        - name: authservice
+          image: ranga/authservice
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authservice-clusterip-srv
+spec:
+  selector:
+    app: authservice
+  ports:
+    - name: authservice
+      protocol: TCP
+      port: 4999
+      targetPort: 4999          
