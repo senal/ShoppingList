@@ -21,3 +21,18 @@
     Check for logs.
         e.g kubctl logs <pod-name>
     Worth running the container locally in order see what's going on inside.
+
+
+3.  ----------------------------
+    ----- NGNIX Ingress controller----
+    ----------------------------  
+    https://kubernetes.github.io/ingress-nginx/deploy/#provider-specific-steps
+
+    ------------------------------------------
+    --------- IMPORTANT NOTE -----------------
+
+    Ingress 
+    It's important to create a ingress controller applying the following config
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.47.0/deploy/static/provider/cloud/deploy.yaml
+
+    Also note that, whenever you restart or recreate your cluster, above configurations will be deleted hence re-running the above configuration is required.
