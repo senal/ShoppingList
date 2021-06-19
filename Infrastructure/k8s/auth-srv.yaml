@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: authservice-srv
+spec:
+  type: NodePort
+  selector: 
+    app: authservice
+  ports:
+    - name: authservice
+      protocol: TCP
+      port: 4999
+      targetPort: 4999
