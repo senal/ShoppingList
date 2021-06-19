@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2beta17 latest
+kind: Config
+deploy: 
+  kubectl:
+    manifests:
+      - ./Infrastructure/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: ranga/authservice
+      context: authservice
+      docker: 
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.cs'
+            dest: .
+            

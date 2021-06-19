@@ -1,0 +1,3 @@
+Use Skaffold with AKS
+Getting started with Azure Kubernetes Service | Skaffold with Spring Boot Example | Tech Primers
+https://www.youtube.com/watch?v=sK9_c9gSR8M
