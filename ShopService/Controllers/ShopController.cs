@@ -33,7 +33,7 @@ namespace ShopService.Controlllers
         [HttpGet]
         public Task<List<string>> GetAll () 
         {
-            List<string> list = new() { "Coles", "WoolWorths", "Aldi", "IGA", "Costco", "FoodWorks", "Foodland", "HarisFarm", "NEW-SHOP"};
+            List<string> list = new() { "Coles", "WoolWorths", "Aldi", "IGA", "Costco", "FoodWorks", "Foodland", "HarisFarm", "Supper IGA", "Some Other shop"};
             return Task.FromResult(list);
         }
 
