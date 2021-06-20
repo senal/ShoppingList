@@ -1,0 +1,6 @@
+------------------------------
+------ Concerns --------------
+------------------------------
+
+1. How to rrun enviorment specific containers in Kubernetes.
+2. How to debug .NET applications while running on containers.

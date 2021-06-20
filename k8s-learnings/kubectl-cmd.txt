@@ -16,6 +16,9 @@
 > kubectl rollout restart deployment [depl-name]
     Redeploy changes to you deployment and services. This will bring down the latest from image repo( assume your services are listed in the same depl file)
 
+> kubectl rollout restart deployments 
+    redeploy (pull new images) and restart all the deployments
+
 > kubectl logs <pod-name> ( you can get the list of pods running ---> kubectl get pods )
 
 > kubectl get services 
