@@ -8,12 +8,12 @@ build:
   local:
     push: false
   artifacts:
-    - image: ranga/authservice
-      context: authservice
+    - image: ranga/authservice          # image name that we prefer
+      context: Authservice              # Folder that contains the source files
       docker: 
         dockerfile: Dockerfile
-      sync:
+      sync:                             # Sync is the watcher for the file changes.
         manual:
-          - src: '*.cs'
+          - src: 'src/**/*.cs'
             dest: .
             
