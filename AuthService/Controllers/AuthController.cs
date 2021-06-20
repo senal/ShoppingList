@@ -18,7 +18,7 @@ namespace  AuthService.Controllers
         [HttpGet]
         public Task<string> Index()
         {
-            return Task.FromResult("Huh... I'm the auth service. Ha ha ha with Skaffold :)");    
+            return Task.FromResult("Huh... I'm the auth service. Ha ha ha :)");    
         }
     }
 }
