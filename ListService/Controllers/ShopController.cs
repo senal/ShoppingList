@@ -28,7 +28,7 @@ namespace ListService.Controllers
             var res = await _httpClient.GetAsync("shop");
             if(res.IsSuccessStatusCode){
                 var shops = await res.Content.ReadFromJsonAsync<List<string>>();
-                var shopWithPrefix = shops?.Select(i => $"from list service x : {i}").ToList();
+                var shopWithPrefix = shops?.Select(i => $"Displaying shops from list service: {i}").ToList();
                 return Ok(shopWithPrefix); 
             }
             return NotFound();

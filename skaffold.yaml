@@ -16,4 +16,12 @@ build:
         manual:
         - src: '**.cs'                   # watching for Any .cs file changes
           dest: .                       # destination where the files needs to be copied in the running container. 
-            
+    - image: ranga/listservice
+      context: ListService
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+        - src: '**.cs'
+          dest: .
+          
