@@ -1,4 +1,4 @@
-apiVersion: skaffold/v2beta17 latest
+apiVersion: skaffold/v2beta17
 kind: Config
 deploy: 
   kubectl:
@@ -9,11 +9,11 @@ build:
     push: false
   artifacts:
     - image: ranga/authservice          # image name that we prefer
-      context: Authservice              # Folder that contains the source files
+      context: AuthService              # Folder that contains the source files
       docker: 
         dockerfile: Dockerfile
       sync:                             # Sync is the watcher for the file changes.
         manual:
-          - src: 'src/**/*.cs'
-            dest: .
+        - src: '**.cs'                   # watching for Any .cs file changes
+          dest: .                       # destination where the files needs to be copied in the running container. 
             

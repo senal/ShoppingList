@@ -36,3 +36,5 @@
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.47.0/deploy/static/provider/cloud/deploy.yaml
 
     Also note that, whenever you restart or recreate your cluster, above configurations will be deleted hence re-running the above configuration is required.
+
+4. .NET projects do not required 'UseHttpsRedirection'. However, when running the application in a container, things like proper HTTPS configuration are in the hosting environment’s responsibility (eg. Kubernetes, Azure Container Instances, or the App Services runtime).
