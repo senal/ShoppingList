@@ -1,7 +1,8 @@
 using System.Net.Http;
 using System.Threading.Tasks;
+using AuthService.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using MongoDB.Driver;
 
 namespace  AuthService.Controllers
 {
@@ -10,9 +11,11 @@ namespace  AuthService.Controllers
     [Route("[controller]")]
     public class AuthController : ControllerBase 
     {                             
-        public AuthController()
+
+        public AuthController(IShoopingContextSettings settings)
         {
-            
+            var client = new MongoClient(settings.ConnectionString);
+            var database = client.GetDatabase(settings.DatabaseName);    
         }
 
         [HttpGet]

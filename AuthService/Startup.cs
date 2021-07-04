@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using AuthService.Models;
+using Microsoft.Extensions.Options;
 
 namespace AuthService
 {
@@ -26,7 +28,8 @@ namespace AuthService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.Configure<ShoopingContextSettings>(Configuration.GetSection(nameof(ShoopingContextSettings)));
+            services.AddSingleton<IShoopingContextSettings>(p => p.GetRequiredService<IOptions<ShoopingContextSettings>>().Value);    
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
