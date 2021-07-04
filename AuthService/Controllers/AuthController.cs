@@ -20,5 +20,12 @@ namespace  AuthService.Controllers
         {
             return Task.FromResult("Huh... I'm the auth service. Ha ha ha :)");    
         }
+
+        [HttpGet("user/{name}")]
+        public Task<string> Get(string name) 
+        {
+                return Task.FromResult($"Hello, I'm {name}");
+        }
+        
     }
 }

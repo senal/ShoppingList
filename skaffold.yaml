@@ -24,4 +24,12 @@ build:
         manual:
         - src: '**.cs'
           dest: .
+    - image: ranga/authservice
+      context: AuthService
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+        - src: '**.cs'
+          dest: .      
           
