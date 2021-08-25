@@ -23,6 +23,31 @@ namespace ListService.Controllers
             return Task.FromResult("Alooo, This is the list service");
         }
 
+        [HttpGet]
+        public Task<List<string>> GetAll()
+        {
+            return Task.FromResult("Alooo, This is the list service");
+        }
+
+        [HttpPost]
+        public Task<IActionResult> Create()
+        {
+            return Ok();
+        }
+
+        [HttpPut]
+        public Task<IActionResult> Create()
+        {
+            return Ok();
+        }
+        
+        [HttpDelete]
+        public Task<IActionResult> Delete()
+        {
+            return Ok();
+        }
+
+
 
         
     }
