@@ -1,4 +1,5 @@
 using System.Net.Http;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,39 +17,25 @@ namespace ListService.Controllers
             _httpClient = httpClient;
         }
 
-
         [HttpGet]
-        public Task<string> Get()
+        public Task<IActionResult> GetAll()
         {
-            return Task.FromResult("Alooo, This is the list service");
-        }
-
-        [HttpGet]
-        public Task<List<string>> GetAll()
-        {
-            return Task.FromResult("Alooo, This is the list service");
+            var list = new List<string>();
+            return Ok(new List<string>());
         }
 
         [HttpPost]
-        public Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            return Ok();
+            var id = new global::System.Guid();
+            return CreatedAtAction("Get", new {id = id}, id);
         }
 
-        [HttpPut]
-        public Task<IActionResult> Create()
-        {
-            return Ok();
-        }
-        
         [HttpDelete]
-        public Task<IActionResult> Delete()
+        public IActionResult Delete()
         {
             return Ok();
         }
-
-
-
         
     }
     
