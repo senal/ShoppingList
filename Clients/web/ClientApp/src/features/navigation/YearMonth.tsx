@@ -74,27 +74,48 @@ const YearMonth = () => {
 
     console.log('Items', items);
 
+    const [defaultYear, setDefaultYear] = useState(0);
+    const [defaultMonths, setDefaultMonths] = useState([] as IMonth[]);
+
+
+    useEffect(() => {
+        if(items && items.length > 0) {
+            setDefaultYear(items[0].year);
+            setDefaultMonths(items[0].months);
+        }
+    }, []);
+
+
+    // <div> <Month year={i.year} months={i.months} /> </div>
     return (
         <div>
             <div>This is sample</div>
             {    
-            items.map(i => <><div><Year year={i.year} /></div> <div> <Month year={i.year} months={i.months} /> </div></>)
+            items.map(i => <><div><Year year={i.year} > { i.year === defaultYear ? "Active" : ""}</Year> </div> </>)
+            
             }
+            <div>--------------</div>
+            <Month year={defaultYear} months={defaultMonths}></Month>
         </div>
     )
 }
 
-interface IYearProps {
+interface IBaseProps {
+    children?: any
+}
+
+
+interface IYearProps extends IBaseProps {
     year: number
 }
 
 export const Year = (props: IYearProps) => {
-    const {year} = props;
-    return (<div>{year}</div>)
+    const {year, children} = props;
+    return (<div>{year} {children}</div>)
 }
 
 
-interface IMonthProps {
+interface IMonthProps extends IBaseProps {
     year: number;
     months: IMonth[]
 }
@@ -103,9 +124,15 @@ export const Month = (props: IMonthProps) => {
     
     const { year, months } = props;
 
+    const [defautMonth, setDefaultMonth] = useState(0);
+
+    useEffect(() => {
+        setDefaultMonth(months[0].value)
+    }, []);
+
     return (
         <div>
-          {months.map(m => <div>{m.text}</div>)}
+          {months.map(m => <div>{m.text} {defautMonth === m.value ? "Acive" : "" }</div>)}
          </div>
     );
 }
