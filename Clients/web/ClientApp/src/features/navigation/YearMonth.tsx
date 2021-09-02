@@ -17,7 +17,7 @@ interface IMemoryLane {
 
 const YearMonth = () => {
 
-
+    // TDOO: should fetch from backend when ready
     const items = [{
         year: 2021,
         months: [ {
@@ -74,28 +74,37 @@ const YearMonth = () => {
 
     console.log('Items', items);
 
-    const [defaultYear, setDefaultYear] = useState(0);
-    const [defaultMonths, setDefaultMonths] = useState([] as IMonth[]);
+    const [selectedYear, setSelectedYear] = useState(0);
+    const [selectedMonths, setSelectedMonths] = useState([] as IMonth[] | undefined);
 
 
     useEffect(() => {
         if(items && items.length > 0) {
-            setDefaultYear(items[0].year);
-            setDefaultMonths(items[0].months);
+            setSelectedYear(items[0].year);
+            setSelectedMonths(items[0].months);
         }
     }, []);
 
 
+    useEffect(() => {
+        const months = items.find(i => i.year === selectedYear)?.months;
+        setSelectedMonths(months);
+    }, [selectedYear]);
+
+    const onYearSelect = (year: number) => {
+        setSelectedYear(year);
+    }
+
     // <div> <Month year={i.year} months={i.months} /> </div>
     return (
         <div>
-            <div>This is sample</div>
+            <div>Your shopping History</div>
             {    
-            items.map(i => <><div><Year year={i.year} > { i.year === defaultYear ? "Active" : ""}</Year> </div> </>)
+            items.map(i => <><div><Year year={i.year} onSelect={onYearSelect} > { i.year === selectedYear ? "Active" : ""}</Year> </div> </>)
             
             }
             <div>--------------</div>
-            <Month year={defaultYear} months={defaultMonths}></Month>
+            <Month year={selectedYear} months={selectedMonths}></Month>
         </div>
     )
 }
@@ -106,33 +115,37 @@ interface IBaseProps {
 
 
 interface IYearProps extends IBaseProps {
-    year: number
+    year: number,
+    onSelect: (year: number) => void
 }
 
 export const Year = (props: IYearProps) => {
     const {year, children} = props;
-    return (<div>{year} {children}</div>)
+    return (<div onClick={() => props.onSelect(year)} >{year} {children}</div>)
 }
 
 
 interface IMonthProps extends IBaseProps {
     year: number;
-    months: IMonth[]
+    months: IMonth[] | undefined
 }
 
 export const Month = (props: IMonthProps) => {
     
     const { year, months } = props;
 
-    const [defautMonth, setDefaultMonth] = useState(0);
+    const [selectedMonth, setSelectedMonth] = useState(0);
 
     useEffect(() => {
-        setDefaultMonth(months[0].value)
-    }, []);
+        if(months && months.length > 0) {
+            setSelectedMonth(months[0].value)     
+        }
+        
+    }, [months]);
 
     return (
         <div>
-          {months.map(m => <div>{m.text} {defautMonth === m.value ? "Acive" : "" }</div>)}
+          {months?.map(m => <div>{m.text} {selectedMonth === m.value ? "Acive" : "" }</div>)}
          </div>
     );
 }
