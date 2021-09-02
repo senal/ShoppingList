@@ -72,8 +72,6 @@ const YearMonth = () => {
     }
 ] as IYearMonthItem [];
 
-    console.log('Items', items);
-
     const [selectedYear, setSelectedYear] = useState(0);
     const [selectedMonths, setSelectedMonths] = useState([] as IMonth[] | undefined);
 
@@ -95,7 +93,6 @@ const YearMonth = () => {
         setSelectedYear(year);
     }
 
-    // <div> <Month year={i.year} months={i.months} /> </div>
     return (
         <div>
             <div>Your shopping History</div>
