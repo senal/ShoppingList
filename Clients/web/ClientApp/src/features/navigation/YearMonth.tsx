@@ -2,7 +2,8 @@ import React, {Fragment, useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import '@fontsource/roboto'
+import '@fontsource/roboto';
+import Typography from '@material-ui/core/Typography';
 
 interface IMonth {
     value: number,
@@ -99,7 +100,8 @@ const YearMonth = () => {
 
     return (
         <Grid container>
-            <Grid container item><Box pb={1} pl={2}><h1> Your shopping History</h1></Box></Grid>
+            
+            <Grid container item><Typography component="div"><Box pb={1} pl={2} fontWeight="fontWeightLight" > Your shopping History</Box></Typography></Grid>
             <Grid  container spacing={2} item>
                 <Grid justifyContent="flex-start"  item>
             {    

@@ -8,4 +8,4 @@ const MonthlyListCollection = () => {
     )
 }
 
-export default MonthlyListCollection
+export default MonthlyListCollection;
