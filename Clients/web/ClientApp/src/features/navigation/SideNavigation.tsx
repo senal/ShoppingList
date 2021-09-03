@@ -3,8 +3,7 @@ import YearMonth from './YearMonth'
 
 
 const SideNavigation = () => {
-    return (<YearMonth></YearMonth>
-        )
+    return (<YearMonth></YearMonth>)
 }
 
 export default SideNavigation;
