@@ -1,12 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+
+
 import SideNavigation from '../navigation/SideNavigation';
 import ListsOfMonth from './ListsOfMonth';
-import Container from '@material-ui/core/Container';
+import MonthlyStatistics from '../stats/MonthlyStatistics';
 
 const Dashboard = () => {
+   
+    const [selectedMonth, setSelectedMonth] = useState(0);
+   
+   
     return (
     <Container>
-        <SideNavigation />
+        <Grid container>
+            <Grid item><SideNavigation /></Grid>
+            <Grid item><MonthlyStatistics month={selectedMonth} />        </Grid>
+        </Grid>
         <ListsOfMonth />
     </Container>);
 }
