@@ -50,7 +50,6 @@ const YearMonth = (props: IYearMonthProps) => {
 
     return (
         <Grid container>
-            {/* <Grid container item><Typography component="div"><Box pb={1} pl={2} fontWeight="fontWeightLight" > Your shopping History</Box></Typography></Grid> */}
             <Grid justifyContent="flex-start" container spacing={3} item>
                 <Grid   item>
             {    
