@@ -5,78 +5,20 @@ import Button from '@material-ui/core/Button';
 import '@fontsource/roboto';
 import Typography from '@material-ui/core/Typography';
 
-interface IMonth {
-    value: number,
-    text: string
-}
+import IMonth  from './IMonth';
+import IYearMonthItem from './IYearMonthItem';
 
-interface IYearMonthItem {
-    year: number,
-    months: IMonth[]
-}
 
-interface IMemoryLane {
+
+interface IYearMonthProps {
     items: IYearMonthItem[]
 }
 
+const YearMonth = (props: IYearMonthProps) => {
 
-const YearMonth = () => {
 
-    // TDOO: should fetch from backend when ready
-    const items = [{
-        year: 2021,
-        months: [ {
-            value: 9,
-            text: "Sep"
-        },
-        {
-            value: 8,
-            text: "Aug"
-        },
-        {
-            value: 7,
-            text: "July"
-        },
-        {
-            value: 6,
-            text: "Jun"
-        },
-        {
-            value: 5,
-            text: "May"
-        },
-        {
-            value: 4,
-            text: "Apr"
-        },
-        {
-            value: 3,
-            text: "Mar"
-        },
-        {
-            value: 2,
-            text: "Feb"
-        },
-        {
-            value: 1,
-            text: "Jan"
-        }
-    ]
-    },
-    {
-        year: 2020,
-        months: [ {
-            value: 12,
-            text: "Dec"
-        },
-        {
-            value: 11,
-            text: "Nov"
-        }
-    ]
-    }
-] as IYearMonthItem [];
-
+    const { items } = props;
+   
     const [selectedYear, setSelectedYear] = useState(0);
     const [selectedMonths, setSelectedMonths] = useState([] as IMonth[] | undefined);
 
