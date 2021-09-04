@@ -86,12 +86,15 @@ const Dashboard = () => {
     }
 
     return (
-    <Container>
-        <Grid container>
-            <Grid item><YearMonth items={items} onSelect={onMonthSelect} /></Grid>
-            <Grid item><MonthlyStatistics yearMonth={selectedYearMonth} /></Grid>
+    <Container maxWidth={'lg'}>
+        <Grid container >
+            <Grid item>
+                <YearMonth items={items} onSelect={onMonthSelect} />
+            </Grid>
+            <Grid item>
+                <MonthlyStatistics yearMonth={selectedYearMonth} />
+            </Grid>
         </Grid>
-        <ListsOfMonth />
     </Container>);
 }
 

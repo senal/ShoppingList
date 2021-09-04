@@ -3,10 +3,21 @@ import React from 'react'
 
 interface IListItem {
     name: string,
-    date: Date,
-    shop: string
-    isCompleted: boolean
+    dateCreated: Date,
+    validUntil: Date,
+    isClosed: boolean,
+    shop: string,
+    isCompleted: boolean,
+    items: IItem[]
 }
+
+interface IItem {
+    productId: number,
+    productName: string,
+    price: number,
+    qty: number
+}
+
 
 
 interface IListOfMonthProps {
@@ -18,25 +29,25 @@ const ListsOfMonth = () => {
 
     const lists = [{
         name: "#List1",
-        date: new Date(2021, 9, 1),
+        dateCreated: new Date(2021, 9, 1),
         shop: "Coles",
         isCompleted: true
     }, 
     {
         name: "#List2",
-        date: new Date(2021, 9, 1),
+        dateCreated: new Date(2021, 9, 1),
         shop: "Coles",
         isCompleted: false
     }, 
     {
         name: "#List3",
-        date: new Date(2021, 9, 2),
+        dateCreated: new Date(2021, 9, 2),
         shop: "WW",
         isCompleted: false
     }, 
     {
         name: "#List1",
-        date: new Date(2021, 9, 1),
+        dateCreated: new Date(2021, 9, 1),
         shop: "WW",
         isCompleted: true
 }] as IListItem[];
