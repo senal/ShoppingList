@@ -1,13 +1,17 @@
 import React from 'react'
 
+import { IYearMonth } from '../navigation/IYearMonth';
+
 
 interface IMonthlyExpenseChartProps {
-    month: number
+    yearMonth: IYearMonth
 } 
 
-
 const MonthlyExpenseChart = (props: IMonthlyExpenseChartProps) => {
-    return (<div>Expense chart for the month : {props.month}</div>);
+
+    const {yearMonth} = props;
+
+    return (<div>Expense chart for the month : {yearMonth.year} - {yearMonth.month.text}</div>);
 }
 
 export default MonthlyExpenseChart;

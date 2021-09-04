@@ -44,7 +44,7 @@ const ListsOfMonth = () => {
     return (
         <div>
             {lists.map((l, i) => {
-                return <div>{l.name}</div>
+                return <div key={i}>{l.name}</div>
             })}        
         </div>
     )

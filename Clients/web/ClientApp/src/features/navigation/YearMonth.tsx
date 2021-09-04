@@ -1,123 +1,71 @@
-import React, {Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import '@fontsource/roboto';
-import Typography from '@material-ui/core/Typography';
 
 import IMonth  from './IMonth';
-import IYearMonthItem from './IYearMonthItem';
-
+import IYearMonthsItem from './IYearMonthsItem';
+import Year from './Year';
+import Month from './Month';
+import { IYearMonth } from './IYearMonth';
 
 
 interface IYearMonthProps {
-    items: IYearMonthItem[]
+    items: IYearMonthsItem[],
+    onSelect: (select: IYearMonth) => void
 }
 
 const YearMonth = (props: IYearMonthProps) => {
 
-
-    const { items } = props;
+    const { items, onSelect } = props;
    
     const [selectedYear, setSelectedYear] = useState(0);
+    const [selectedMonth, setSelectedMonth] = useState({} as IMonth);
     const [selectedMonths, setSelectedMonths] = useState([] as IMonth[] | undefined);
-
 
     useEffect(() => {
         if(items && items.length > 0) {
             setSelectedYear(items[0].year);
             setSelectedMonths(items[0].months);
         }
+          // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
     useEffect(() => {
         const months = items.find(i => i.year === selectedYear)?.months;
         setSelectedMonths(months);
+          // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedYear]);
 
     const onYearSelect = (year: number) => {
         setSelectedYear(year);
+        onSelect({year: year, month:selectedMonth});
     }
+
+    const onMonthSelect = (selectedMonth: IMonth) => {
+        setSelectedMonth(selectedMonth);
+        onSelect({year: selectedYear, month: selectedMonth});
+    }
+
 
     return (
         <Grid container>
-            
-            <Grid container item><Typography component="div"><Box pb={1} pl={2} fontWeight="fontWeightLight" > Your shopping History</Box></Typography></Grid>
-            <Grid  container spacing={2} item>
-                <Grid justifyContent="flex-start"  item>
+            {/* <Grid container item><Typography component="div"><Box pb={1} pl={2} fontWeight="fontWeightLight" > Your shopping History</Box></Typography></Grid> */}
+            <Grid justifyContent="flex-start" container spacing={3} item>
+                <Grid   item>
             {    
-            items.map(i => <Grid item ><Year selected={selectedYear} year={i.year} onSelect={onYearSelect} > { i.year === selectedYear ? "Active" : ""}</Year> </Grid>)
+            items.map(i => <Grid key={i.year} item ><Year key={i.year} selected={selectedYear} year={i.year} onSelect={onYearSelect} > { i.year === selectedYear ? "Active" : ""}</Year> </Grid>)
             
             }
                 </Grid>
-                <Grid justifyContent="flex-start"  item>
-                    <Month year={selectedYear} months={selectedMonths}></Month>
+                <Grid   item>
+                        <Month year={selectedYear} months={selectedMonths} onMonthSelect={onMonthSelect}></Month>
                 </Grid>
+                <Grid item></Grid>
             </Grid>
             
         </Grid>
     )
 }
-
-interface IBaseProps {
-    children?: any
-}
-
-
-interface IYearProps extends IBaseProps {
-    year: number,
-    selected: number
-    onSelect: (year: number) => void
-}
-
-export const Year = (props: IYearProps) => {
-    const {year, selected, children} = props;
-
-    const button = year === selected ? <Button variant="contained" color="primary" onClick={() => props.onSelect(year)}>{year}</Button> 
-                : <Button variant="contained" onClick={() => props.onSelect(year)}>{year}</Button>;
-
-    return (<Box p={1}>{button}</Box>);
-}
-
-
-interface IMonthProps extends IBaseProps {
-    year: number;
-    months: IMonth[] | undefined
-}
-
-export const Month = (props: IMonthProps) => {
-    
-    const { year, months } = props;
-
-    const [selectedMonth, setSelectedMonth] = useState({value: 0, text: ""} as IMonth);
-
-    useEffect(() => {
-        if(months && months.length > 0) {
-            setSelectedMonth(months[0])     
-        }
-        
-    }, [months]);
-    
-    
-    const onSelect = (month: IMonth) => {
-        console.log('selected', month);
-        setSelectedMonth(month);
-    }
-
-    const content = (currentMonth: IMonth, selectedMonth: IMonth) => {
-        const printMonth = currentMonth.value === selectedMonth.value ? <Button variant="outlined" color="secondary" onClick={() => onSelect(currentMonth)}>{currentMonth.text}</Button> :  <Button variant="outlined" color="primary" onClick={() => onSelect(currentMonth)}>{currentMonth.text}</Button>
-        return printMonth;
-    }
-
-
-    return (
-        <Fragment>
-                      {months?.map(m => <Box p={1}> {content(m, selectedMonth)}</Box>)}
-        </Fragment>
-
-    );
-}
-
 
 export default YearMonth
