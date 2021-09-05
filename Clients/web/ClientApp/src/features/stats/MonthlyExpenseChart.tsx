@@ -1,5 +1,5 @@
 import React from 'react'
-import { BarChart, CartesianGrid, XAxis, YAxis, Bar } from 'recharts';
+import { BarChart, CartesianGrid, XAxis, YAxis, Bar, Cell, Tooltip } from 'recharts';
 
 import { IYearMonth } from '../navigation/IYearMonth';
 
@@ -13,7 +13,8 @@ interface IMonthlyExpenseChartProps {
 interface IData {
     name: string,
     date: number,
-    total: number
+    total: number,
+    isCompleted: boolean,
 }
 
 const MonthlyExpenseChart = (props: IMonthlyExpenseChartProps) => {
@@ -24,22 +25,27 @@ const MonthlyExpenseChart = (props: IMonthlyExpenseChartProps) => {
         {
             date: 31,
             total: 240.89,
-            name: "sep-2"
+            name: "sep-2",
+            isCompleted: false,
         },
         {
             date: 20,
             total: 58.90,
-            name: "sep-3"
+            name: "sep-3",
+            isCompleted: true,
         },
         {
             date: 10,
             total: 120.00,
-            name: "sep-4"
+            name: "sep-4",
+            isCompleted: false,
         },
         {
             date: 2,
             total: 75.00,
-            name: "sep-5"
+            name: "sep-5",
+            isCompleted: false,
+
         },
     ] as IData []
 
@@ -51,7 +57,16 @@ const MonthlyExpenseChart = (props: IMonthlyExpenseChartProps) => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
             <YAxis dataKey="total" />
-            <Bar dataKey="total" fill="#8884d8" />
+            <Bar dataKey="total" fill="#8884d8" > 
+                {
+                    data.map((e, i) => (
+                        <>    
+                        <Cell key={`cell-${e.date}`}  fill={e.isCompleted ? '#1f77b4' : '#ff7f0e'}  >
+                        </Cell>
+                        </>
+                    ))
+                }
+            </Bar>
         </BarChart>
         </div>
     </div>);
