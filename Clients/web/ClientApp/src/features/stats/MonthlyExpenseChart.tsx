@@ -52,6 +52,7 @@ const MonthlyExpenseChart = (props: IMonthlyExpenseChartProps) => {
 
     return (<div>
         <div>Expense chart for the month : {yearMonth.year} - {yearMonth.month.text}</div>
+        <div>&nbsp;</div>
         <div>
         <BarChart width={730} height={250} data={data}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -61,7 +62,7 @@ const MonthlyExpenseChart = (props: IMonthlyExpenseChartProps) => {
                 {
                     data.map((e, i) => (
                         <>    
-                        <Cell key={`cell-${e.date}`}  fill={e.isCompleted ? '#1f77b4' : '#ff7f0e'}  >
+                        <Cell key={`cell-${e.date}`}  fill={e.isCompleted ? '#BDBDBD' : '#3F51B5'}  >
                         </Cell>
                         </>
                     ))
