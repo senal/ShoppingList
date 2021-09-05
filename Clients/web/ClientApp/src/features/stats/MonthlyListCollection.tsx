@@ -144,8 +144,8 @@ const MonthlyListCollection = (props: IMonthlyListCollectionProps) => {
         
         const secondary =  isCompleted ? `Completed on ${activeUntil.getDate()} - ${activeUntil.getMonth()} - ${activeUntil.getFullYear()}` 
                                             : `Active until ${activeUntil.getDate()} - ${activeUntil.getMonth()} - ${activeUntil.getFullYear()}`
-        const listItem = isCompleted ? <ListItem><ListItemAvatar><AssignmentTurnedInIcon color={'disabled'} /></ListItemAvatar><ListItemText primary={caption} secondary={secondary} /></ListItem> 
-                                     : <ListItem><ListItemAvatar><EditIcon color={'primary'} /></ListItemAvatar><ListItemText primary={caption} secondary={secondary} /></ListItem>;
+        const listItem = isCompleted ? <ListItem key={item.id}><ListItemAvatar><AssignmentTurnedInIcon color={'disabled'} /></ListItemAvatar><ListItemText primary={caption} secondary={secondary} /></ListItem> 
+                                     : <ListItem key={item.id}><ListItemAvatar><EditIcon color={'primary'} /></ListItemAvatar><ListItemText primary={caption} secondary={secondary} /></ListItem>;
         return listItem;
     }
 
