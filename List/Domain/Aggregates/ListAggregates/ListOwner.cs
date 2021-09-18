@@ -1,4 +1,4 @@
-﻿using Domain.Common;
+﻿using Domain.SeedWork;
 using System;
 
 namespace Domain.Aggregates.ListAggregates

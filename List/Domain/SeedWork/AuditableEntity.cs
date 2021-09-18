@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Common
+namespace Domain.SeedWork
 {
     public class AuditableEntity : Entity
     {
