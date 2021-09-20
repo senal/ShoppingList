@@ -12,12 +12,22 @@ namespace Domain.Aggregates.ListAggregates
         private Guid _shopId;
         private Guid _owenerId;
 
-        private readonly List<ListItem> _items;
+        private readonly List<ListItem> _listItems;
+        public IReadOnlyCollection<ListItem> ListItems => _listItems;
+
+        public ListStatus ListStatus { get; private set; }
+        private int _listStatusId;
 
         protected List()
         {
-            _items = new List<ListItem>();
+            _listStatusId = ListStatus.Draft.Id;
+            _listItems = new List<ListItem>();
         }
+
+        public ListOwner ListOwner { get; private set; }
+
+        public Shop Shop { get; private set; }
+
 
         /// <summary>
         /// Initilise an order with required properties
@@ -39,7 +49,7 @@ namespace Domain.Aggregates.ListAggregates
 
         public void AddListItem (Guid productId, string productName, decimal unitPrice, int units = 1)
         {
-            var existingProduct = _items.SingleOrDefault(i => i.ProductId == productId);
+            var existingProduct = _listItems.SingleOrDefault(i => i.ProductId == productId);
             if(existingProduct != null)
             {
                 existingProduct.AddUnits(units);
@@ -47,13 +57,13 @@ namespace Domain.Aggregates.ListAggregates
             else
             {
                 var listItem = new ListItem(productId, productName, unitPrice, units);
-                _items.Add(listItem);
+                _listItems.Add(listItem);
             }
         }
 
         public decimal GetTotal ()
         {
-            return _items.Sum(i => i.GetUnitPrice() * i.GetUnits());
+            return _listItems.Sum(i => i.GetUnitPrice() * i.GetUnits());
         }
 
     }
